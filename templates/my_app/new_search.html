@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2 style="text-align: center;">{{ search | title }}</h2>
+    <div class="row" style="height: 100%;">
+      {% for data in search_result %}
+        <div class="col s4" style="height: 100%;">
+            <div class="card" style="height: 350px; overflow: hidden;">
+                <div class="card-image" style="height: 200px; overflow: hidden;">
+                    <a href="{{ data.webpageUrl }}">
+                      <img src="{{ data.url }}" alt="" style="height: 200px; object-fit: cover;">
+                    </a>
+                </div>
+                <div class="card-content" style="height: 100px; overflow: hidden">
+                    <p>{{ data.title }}</p>
+                </div>
+                <div class="card-action" style="font-size: 13px;">
+                  <a href="{{ data.webpageUrl }}">
+                    Provider: {{ data.provider.name }}
+                  </a>
+                </div>
+            </div>
+        </div>
+      {% endfor %}
+    </div>
+{% endblock content %}
